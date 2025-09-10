@@ -1,0 +1,590 @@
+{
+  "auth": {
+    "agree": "我同意",
+    "createAccount": "创建账号",
+    "createNewAccount": "创建新账号",
+    "email": "电子邮箱",
+    "login": "登录",
+    "passrd": "密码",
+    "recover_password": "恢复密码",
+    "sign_up": "注册",
+    "keep_logged_in": "保持登录",
+    "termsOfUse": "使用条款",
+    "reset_password": "重置密码"
+  },
+  "404": {
+    "title": "此页面已去钓鱼",
+    "text": "如果您觉得这不对，请给我们发送消息",
+    "back_button": "返回仪表板"
+  },
+  "typography": {
+    "primary": "主要文本样式",
+    "secondary": "次要文本样式"
+  },
+  "dashboard": {
+    "title": "仪表盘",
+    "versions": "版本",
+    "setupRemoteConnections": "设置远程连接",
+    "currentVisitors": "当前访问者",
+    "metrics": {
+      "openInvoices": "待开发票",
+      "ongoingProjects": "进行中物料",
+      "employees": "员工",
+      "newProfit": "新利润"
+    },
+    "cards": {
+      "revenueReport": "收入报告",
+      "yearlyBreakup": "年度细分",
+      "monthlyEarnings": "月收入",
+      "revenueByLocation": "按地区收入",
+      "revenueByTopRegions": "按主要地区收入",
+      "regionRevenue": "地区收入",
+      "projectTable": "物料管理表格",
+      "timeline": "时间线",
+      "countries": "国家",
+      "totalEarnings": "总收入",
+      "earningsThisMonth": "本月收入",
+      "expensesThisMonth": "本月支出",
+      "export": "导出",
+      "lastYear": "去年",
+      "lastMonth": "上月",
+      "earnings": "收入",
+      "profit": "利润",
+      "expenses": "支出",
+      "viewAllProjects": "查看所有物料"
+    },
+    "table": {
+      "name": "名称",
+      "status": "状态",
+      "team": "团队",
+      "topRegion": "主要地区",
+      "revenue": "收入"
+    },
+    "time": {
+      "today": "今天",
+      "week": "本周",
+      "month": "本月",
+      "sinceLastMonth": "自上月以来"
+    },
+    "timeline": {
+      "updatedStatus": "更新了状态",
+      "awaitingResponse": "等待客户回复",
+      "addedToGroup": "被添加到组",
+      "groupName": "组名是",
+      "openedShowcase": "打开了新展示",
+      "withTheme": "主题为市场",
+      "updatedStatusTo": "将状态更新为",
+      "projectCreated": "项目",
+      "wasCreated": "已创建"
+    },
+    "actions": {
+      "export": "导出"
+    },
+    "months": {
+      "jan": "一月",
+      "feb": "二月",
+      "mar": "三月",
+      "apr": "四月",
+      "may": "五月",
+      "jun": "六月",
+      "jul": "七月",
+      "aug": "八月",
+      "sep": "九月",
+      "oct": "十月",
+      "nov": "十一月",
+      "dec": "十二月"
+    },
+    "charts": {
+      "trendyTrends": "流行趋势",
+      "showInMoreDetail": "显示更多细节",
+      "showInLessDetail": "显示较少细节",
+      "loadingSpeed": "加载速度",
+      "topContributors": "主要贡献者",
+      "showNextFive": "显示接下来的五个",
+      "commits": "提交"
+    },
+    "info": {
+      "componentRichTheme": "组件丰富的主题",
+      "completedPullRequests": "已完成的拉取请求",
+      "users": "用户",
+      "points": "点数",
+      "units": "单位",
+      "exploreGallery": "探索画廊",
+      "viewLibrary": "查看库",
+      "commits": "提交",
+      "components": "组件",
+      "teamMembers": "团队成员"
+    },
+    "tabs": {
+      "overview": {
+        "title": "概述",
+        "built": "使用 Vue.js 框架构建",
+        "free": "对所有人完全免费",
+        "fresh": "新鲜和清新的设计",
+        "mobile": "响应式且优化移动",
+        "components": "大量有用的组件",
+        "nojQuery": "完全不使用 jQuery"
+      },
+      "billingAddress": {
+        "title": "账单地址",
+        "personalInfo": "个人信息",
+        "firstName": "名字 & 姓氏",
+        "email": "电子邮箱",
+        "address": "地址",
+        "companyInfo": "公司信息",
+        "city": "城市",
+        "country": "国家",
+        "infiniteConnections": "无限连接",
+        "addConnection": "添加连接"
+      },
+      "bankDetails": {
+        "title": "银行详情",
+        "detailsFields": "详情字段",
+        "bankName": "银行名称",
+        "accountName": "账户名称",
+        "sortCode": "排序代码",
+        "accountNumber": "账号",
+        "notes": "备注",
+        "sendDetails": "发送详情"
+      }
+    },
+    "navigationLayout": "导航布局",
+    "topBarButton": "顶部按钮",
+    "sideBarButton": "侧边按钮"
+  },
+  "language": {
+    "brazilian_portuguese": "葡萄牙语",
+    "english": "英语",
+    "spanish": "西班牙语",
+    "simplified_chinese": "简体中文",
+    "persian": "波斯语"
+  },
+  "common": {
+    "save": "保存",
+    "cancel": "取消",
+    "create": "创建",
+    "edit": "编辑",
+    "delete": "删除",
+    "confirm": "确认"
+  },
+  "menu": {
+    "home": "主页",
+    "auth": "授权",
+    "buttons": "按钮",
+    "timelines": "时间线",
+    "dashboard": "仪表板",
+    "billing": "计费",
+    "users": "用户管理",
+    "login": "登录",
+    "signUp": "注册",
+    "preferences": "个人信息",
+    "settings": "设置",
+    "payments": "支付",
+    "pricing-plans": "定价计划",
+    "login-singup": "登录/注册",
+    "404": "404 页面",
+    "faq": "常见问题解答",
+    "projects": "物料管理",
+    "testingItem": "测试项管理"
+  },
+  "projects": {
+    "viewMode": {
+      "cards": "卡片视图",
+      "table": "表格视图"
+    },
+    "table": {
+      "projectName": "物料名称",
+      "projectOwner": "负责人",
+      "team": "团队",
+      "status": "状态",
+      "creationDate": "创建日期",
+      "actions": "操作",
+      "editProject": "编辑物料",
+      "deleteProject": "删除物料",
+      "results": "条结果",
+      "resultsPerPage": "每页显示条数",
+      "previousPage": "上一页",
+      "nextPage": "下一页"
+    },
+    "status": {
+      "inProgress": "进行中",
+      "archived": "已归档",
+      "completed": "已完成",
+      "important": "重要"
+    }
+  },
+  "materials": {
+    "viewMode": {
+      "cards": "卡片视图",
+      "table": "表格视图"
+    },
+    "table": {
+      "name": "名称/编号",
+      "materialCode": "物料代码",
+      "materialName": "物料名称",
+      "description": "描述",
+      "type": "类型",
+      "status": "数量/状态",
+      "creationDate": "创建时间",
+      "productCount": "产品数量",
+      "testItems": "测试项",
+      "actions": "操作",
+      "editMaterial": "编辑物料",
+      "deleteMaterial": "删除物料",
+      "results": "条结果",
+      "resultsPerPage": "每页显示条数",
+      "previousPage": "上一页",
+      "nextPage": "下一页"
+    },
+    "form": {
+      "materialCode": "物料代码",
+      "materialName": "物料名称",
+      "productCount": "产品数量",
+      "addTestItem": "添加测试项",
+      "testItems": "测试项列表",
+      "addTitle": "添加物料",
+      "editTitle": "编辑物料"
+    },
+    "messages": {
+      "created": "物料创建成功",
+      "updated": "物料更新成功",
+      "deleted": "物料删除成功"
+    },
+    "confirm": {
+      "deleteTitle": "删除物料",
+      "deleteMessage": "确定要删除物料 \"{name}\" 吗？",
+      "delete": "删除",
+      "unsavedChanges": "表单有未保存的更改。确定要关闭吗？"
+    },
+    "noData": "暂无物料数据",
+    "search": {
+      "placeholder": "搜索物料或产品..."
+    },
+    "type": {
+      "material": "物料",
+      "product": "产品"
+    },
+    "status": {
+      "productCount": "{count} 个产品"
+    }
+  },
+  "products": {
+    "form": {
+      "addTitle": "添加产品",
+      "editTitle": "编辑产品",
+      "addToMaterial": "添加产品 - {materialName}"
+    },
+    "messages": {
+      "created": "产品创建成功",
+      "updated": "产品更新成功",
+      "deleted": "产品删除成功"
+    },
+    "confirm": {
+      "deleteTitle": "删除产品",
+      "deleteMessage": "确定要删除产品 \"{name}\" 吗？",
+      "delete": "删除"
+    }
+  },
+  "messages": {
+    "all": "查看所有消息",
+    "new": "来自 {name} 的新消息",
+    "mark_as_read": "标记为已读"
+  },
+  "navbar": {
+    "messageUs": "需要Web开发帮助吗？请联系我们。",
+    "repository": "GitHub 仓库"
+  },
+  "notifications": {
+    "all": "查看所有通知",
+    "mark_as_read": "标为已读",
+    "sentMessage": "{name} 给你发了一条消息",
+    "uploadedZip": "{name} 上传了一个新的 Zip 文件 {type}",
+    "startedTopic": "{name} 开始了一个新话题"
+  },
+  "buttonSelect": {
+    "dark": "暗色",
+    "light": "亮色"
+  },
+  "settings": {
+    "theme": "主题",
+    "generalPreferences": "通用设置",
+    "language": "语言"
+  },
+  "user": {
+    "language": "修改语言",
+    "logout": "登出",
+    "profile": "我的资料",
+    "settings": "设置",
+    "billing": "账单",
+    "faq": "常见问题",
+    "helpAndSupport": "帮助与支持",
+    "projects": "物料管理",
+    "users": "用户管理",
+    "account": "账户",
+    "explore": "探索"
+  },
+  "treeView": {
+    "basic": "基本型",
+    "icons": "图标",
+    "selectable": "可选择",
+    "editable": "可编辑",
+    "advanced": "高级"
+  },
+  "chat": {
+    "title": "聊天"
+  },
+  "cards": {
+    "cards": "卡片",
+    "fixed": "固定的",
+    "floating": "浮动的",
+    "contentText": "独特的斑马条纹使它们成为人们最熟悉的动物之一。",
+    "rowHeight": "行高",
+    "title": {
+      "dark": "暗色背景",
+      "bright": "亮色卡片",
+      "titleOnImageNoOverlay": "图像上的标题，但没有叠加",
+      "normal": "标准卡",
+      "overlayAndTextOnImage": "图像上有覆盖和文本的卡片",
+      "stripeNoImage": "无图像条纹卡"
+    },
+    "button": {
+      "main": "主要",
+      "cancel": "取消"
+    },
+    "link": {
+      "edit": "编辑",
+      "setAsDefault": "设为默认",
+      "delete": "删除",
+      "traveling": "Traveling",
+      "france": "法国",
+      "review": "评论",
+      "feedback": "反馈信息",
+      "readFull": "阅读全文",
+      "secondaryAction": "第二行为",
+      "action1": "行为 1",
+      "action2": "行为 2"
+    }
+  },
+  "helpAndSupport": "帮助与支持",
+  "aboutVuesticAdmin": "关于 Vuestic Admin",
+  "search": {
+    "placeholder": "搜索..."
+  },
+  "vuestic": {
+    "search": "搜索",
+    "noOptions": "未找到项目",
+    "ok": "确认",
+    "cancel": "取消",
+    "uploadFile": "上传文件",
+    "undo": "撤销",
+    "dropzone": "将文件拖到此处上传",
+    "fileDeleted": "文件已删除",
+    "closeAlert": "关闭警告",
+    "backToTop": "回到顶部",
+    "toggleDropdown": "切换下拉菜单",
+    "carousel": "轮播",
+    "goPreviousSlide": "上一张幻灯片",
+    "goNextSlide": "下一张幻灯片",
+    "goSlide": "跳转到第 {index} 张幻灯片",
+    "slideOf": "第 {index} 张，共 {length} 张",
+    "close": "关闭",
+    "openColorPicker": "打开颜色选择器",
+    "colorSelection": "颜色选择",
+    "colorName": "颜色 {color}",
+    "decreaseCounter": "减少计数",
+    "increaseCounter": "增加计数",
+    "selectAllRows": "选择所有行",
+    "sortColumnBy": "按 {name} 排序",
+    "selectRowByIndex": "选择第 {index} 行",
+    "resetDate": "重置日期",
+    "nextPeriod": "下一个时间段",
+    "switchView": "切换视图",
+    "previousPeriod": "上一个时间段",
+    "removeFile": "删除文件",
+    "reset": "重置",
+    "pagination": "分页",
+    "goToTheFirstPage": "跳转到第一页",
+    "goToPreviousPage": "跳转到上一页",
+    "goToSpecificPage": "跳转到第 {page} 页",
+    "goToSpecificPageInput": "输入页码以跳转",
+    "goNextPage": "跳转到下一页",
+    "goLastPage": "跳转到最后一页",
+    "currentRating": "当前评分 {value} / {max}",
+    "voteRating": "评分 {value} / {max}",
+    "optionsFilter": "选项筛选",
+    "splitPanels": "分割面板",
+    "movePaginationLeft": "分页向左移动",
+    "movePaginationRight": "分页向右移动",
+    "resetTime": "重置时间",
+    "closeToast": "关闭提示",
+    "selectedOption": "已选选项",
+    "noSelectedOption": "未选择选项",
+    "breadcrumbs": "面包屑导航",
+    "counterValue": "计数值",
+    "selectedDate": "选择的日期",
+    "selectedTime": "选择的时间",
+    "progressState": "进度状态",
+    "color": "颜色",
+    "next": "下一步",
+    "back": "上一步",
+    "finish": "完成",
+    "step": "步骤",
+    "progress": "进度",
+    "loading": "加载中",
+    "sliderValue": "当前滑块值为 {value}",
+    "switch": "切换",
+    "inputField": "输入框",
+    "fileTypeIncorrect": "文件类型不正确",
+    "select": "选择一个选项"
+  },
+  "users": {
+    "title": "用户管理",
+    "active": "活跃",
+    "inactive": "不活跃",
+    "search": "搜索",
+    "addUser": "添加用户",
+    "editUser": "编辑用户",
+    "deleteUser": "删除用户",
+    "fullName": "全名",
+    "phone": "手机号",
+    "username": "用户名",
+    "email": "邮箱",
+    "password": "密码",
+    "passwordInputHint": "输入新密码",
+    "passwordChangeHint": "输入新密码以更改现有密码，留空则保持不变",
+    "role": "角色",
+    "actions": "操作",
+    "addImage": "添加图片",
+    "notes": "备注",
+    "save": "保存",
+    "cancel": "取消",
+    "more": "更多",
+    "results": "结果",
+    "resultsPerPage": "每页结果数",
+    "previousPage": "上一页",
+    "nextPage": "下一页",
+    "deleteUserTitle": "删除用户",
+    "deleteUserMessage": "您确定要删除 {name} 吗？",
+    "delete": "删除",
+    "userUpdated": "{name} 已更新",
+    "userCreated": "{name} 已创建",
+    "userDeleted": "{name} 已删除",
+    "cannotDeleteAdmin": "管理员用户不能被删除",
+    "formUnsavedChanges": "表单有未保存的更改。您确定要关闭吗？",
+    "editUserAria": "编辑用户",
+    "deleteUserAria": "删除用户",
+    "showPassword": "显示密码",
+    "hidePassword": "隐藏密码",
+    "roles": {
+      "tester": "测试人员",
+      "regular": "普通人员",
+      "admin": "管理员"
+    }
+  },
+  "testingItems": {
+    "title": "测试项管理",
+    "subtitle": "管理测试项目和相关产品",
+    "noData": "暂无测试项数据",
+    "products": "个产品",
+    "createdAt": "创建时间",
+    "productList": "产品列表",
+    "hideProducts": "隐藏产品",
+    "showProducts": "显示产品",
+    "type": {
+      "testingItem": "测试项",
+      "testProduct": "测试产品"
+    },
+    "types": {
+      "data_analysis": "数据判断",
+      "average_analysis": "平均值判断",
+      "subjective_analysis": "主观判断"
+    },
+    "status": {
+      "productCount": "{count}个产品"
+    },
+    "table": {
+      "code": "编号",
+      "name": "名称/编号",
+      "description": "描述",
+      "type": "类型",
+      "status": "数量/状态",
+      "testItems": "测试项内容",
+      "actions": "操作",
+      "results": "条结果",
+      "resultsPerPage": "每页显示",
+      "previousPage": "上一页",
+      "nextPage": "下一页"
+    },
+    "search": {
+      "placeholder": "搜索测试项代码、名称或测试项..."
+    },
+    "view": {
+      "table": "表格视图",
+      "cards": "卡片视图"
+    },
+    "form": {
+      "addTitle": "新建测试项",
+      "editTitle": "编辑测试项",
+      "itemCode": "编号",
+      "itemCodePlaceholder": "请输入测试项编号",
+      "itemCodeRequired": "编号不能为空",
+      "itemName": "测试项内容",
+      "itemNamePlaceholder": "请输入测试项内容",
+      "itemNameRequired": "测试项内容不能为空",
+      "itemType": "类型",
+      "itemTypeRequired": "请选择类型",
+      "description": "描述",
+      "descriptionPlaceholder": "请输入描述（可选）",
+      "save": "保存",
+      "cancel": "取消"
+    },
+    "messages": {
+      "created": "测试项创建成功",
+      "updated": "测试项更新成功",
+      "deleted": "测试项删除成功"
+    },
+    "confirm": {
+      "deleteTitle": "删除测试项",
+      "deleteMessage": "您确定要删除测试项 \"{name}\" 吗？删除后该测试项下的所有产品也将被删除。",
+      "delete": "删除",
+      "cancel": "取消",
+      "unsavedChanges": "表单有未保存的更改。您确定要关闭吗？",
+      "unsavedChangesTitle": "未保存的更改"
+    }
+  },
+  "testProducts": {
+    "noData": "暂无产品数据",
+    "createdAt": "创建时间",
+    "status": {
+      "notStarted": "未开始",
+      "inProgress": "进行中",
+      "completed": "已完成",
+      "failed": "失败"
+    },
+    "form": {
+      "addTitle": "新建测试产品",
+      "editTitle": "编辑测试产品",
+      "belongsToTestingItem": "所属测试项",
+      "productSerial": "产品序列号",
+      "productSerialPlaceholder": "请输入产品序列号",
+      "productSerialRequired": "产品序列号不能为空",
+      "productName": "产品名称",
+      "productNamePlaceholder": "请输入产品名称",
+      "productNameRequired": "产品名称不能为空",
+      "status": "测试状态",
+      "inheritedTestItems": "继承的测试项",
+      "inheritedTestItemsDescription": "以下测试项继承自所属测试项，不可修改"
+    },
+    "messages": {
+      "created": "测试产品创建成功",
+      "updated": "测试产品更新成功",
+      "deleted": "测试产品删除成功"
+    },
+    "confirm": {
+      "deleteTitle": "删除测试产品",
+      "deleteMessage": "您确定要删除测试产品 \"{name}\" 吗？",
+      "delete": "删除",
+      "cancel": "取消"
+    }
+  }
+}

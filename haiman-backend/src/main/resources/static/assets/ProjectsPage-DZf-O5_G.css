@@ -1,0 +1,47 @@
+.materials-tree-table[data-v-1419c4a5] .va-data-table__table-tr {
+  border-bottom: 1px solid var(--va-background-border);
+}
+.materials-tree-table[data-v-1419c4a5] .va-data-table__table-tr:hover {
+  background-color: var(--va-background-element);
+}
+.materials-tree-table[data-v-1419c4a5] .va-data-table__table-td {
+  vertical-align: middle;
+}
+.view-mode-toggle[data-v-fa304a22] {
+  min-width: 240px;
+  flex-shrink: 0;
+}
+.view-mode-toggle[data-v-fa304a22] .va-button-toggle__option {
+  min-width: 120px;
+  white-space: nowrap;
+  padding: 0 16px;
+  font-size: 0.875rem;
+}
+.search-input[data-v-fa304a22] {
+  min-width: 250px;
+  max-width: 300px;
+}
+@media (min-width: 768px) {
+  .view-mode-toggle[data-v-fa304a22] {
+    min-width: 280px;
+  }
+  .view-mode-toggle[data-v-fa304a22] .va-button-toggle__option {
+    min-width: 140px;
+    padding: 0 20px;
+  }
+  .search-input[data-v-fa304a22] {
+    min-width: 300px;
+    max-width: 350px;
+  }
+}
+@media (max-width: 767px) {
+  .view-mode-toggle[data-v-fa304a22] {
+    width: 100%;
+    max-width: 100%;
+  }
+  .search-input[data-v-fa304a22] {
+    width: 100%;
+    min-width: auto;
+    max-width: none;
+  }
+}

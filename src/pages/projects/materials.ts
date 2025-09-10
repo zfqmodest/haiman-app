@@ -1,0 +1,52 @@
+import { Material, UUID } from './types'
+
+export const materials: Material[] = [
+  {
+    id: 'material-001-2023-001' as UUID,
+    material_code: 'MAT-001',
+    material_name: '钢材-Q235',
+    created_at: '2023-12-01T08:00:00Z',
+    product_count: 15,
+    test_items: ['抗拉强度测试', '硬度测试', '化学成分分析'],
+  },
+  {
+    id: 'material-002-2023-002' as UUID,
+    material_code: 'MAT-002',
+    material_name: '铝合金-6061',
+    created_at: '2023-12-03T10:30:00Z',
+    product_count: 8,
+    test_items: ['抗拉强度测试', '耐腐蚀性测试', '表面粗糙度测试'],
+  },
+  {
+    id: 'material-003-2023-003' as UUID,
+    material_code: 'MAT-003',
+    material_name: '碳纤维复合材料',
+    created_at: '2023-12-05T14:15:00Z',
+    product_count: 3,
+    test_items: ['拉伸模量测试', '弯曲强度测试', '层间剪切强度测试', '疲劳测试'],
+  },
+  {
+    id: 'material-004-2023-004' as UUID,
+    material_code: 'MAT-004',
+    material_name: '不锈钢-304',
+    created_at: '2023-12-07T09:45:00Z',
+    product_count: 22,
+    test_items: ['抗拉强度测试', '耐腐蚀性测试', '硬度测试'],
+  },
+  {
+    id: 'material-005-2023-005' as UUID,
+    material_code: 'MAT-005',
+    material_name: '聚合物材料-PVC',
+    created_at: '2023-12-10T11:20:00Z',
+    product_count: 12,
+    test_items: ['拉伸强度测试', '冲击强度测试', '热变形温度测试'],
+  },
+  {
+    id: 'material-006-2023-006' as UUID,
+    material_code: 'MAT-006',
+    material_name: '钛合金-Ti6Al4V',
+    created_at: '2023-12-12T16:30:00Z',
+    product_count: 5,
+    test_items: ['抗拉强度测试', '疲劳测试', '生物相容性测试', '密度测试'],
+  },
+]

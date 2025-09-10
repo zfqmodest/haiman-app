@@ -1,0 +1,34 @@
+<script setup lang="ts">
+import { type PropType } from 'vue'
+import { type User } from '../types'
+
+const avatarColor = (userName: string) => {
+  const colors = ['primary', '#FFD43A', '#ADFF00', '#262824', 'danger']
+  const index = userName.charCodeAt(0) % colors.length
+  return colors[index]
+}
+
+defineProps({
+  user: {
+    type: Object as PropType<User>,
+    required: true,
+  },
+  size: {
+    type: String,
+    default: 'medium',
+  },
+})
+
+const fallback = (fullname: string) => {
+  try {
+    const [firstName, lastName] = fullname.split(' ')
+    return `${firstName[0]}${lastName[0]}`
+  } catch {
+    return fullname[0]
+  }
+}
+</script>
+
+<template>
+  <VaAvatar :size="size" :fallback-text="fallback(user.fullname)" :color="avatarColor(user.fullname)" />
+</template>
