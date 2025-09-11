@@ -4,9 +4,10 @@ import { useForm } from 'vuestic-ui'
 import { useI18n } from 'vue-i18n'
 import { User, UserRole } from '../types'
 import UserAvatar from './UserAvatar.vue'
-import { validators } from '../../../services/utils'
+import { createValidators } from '../../../services/utils'
 
 const { t } = useI18n()
+const validators = createValidators()
 const showPassword = ref(false)
 
 const props = defineProps({

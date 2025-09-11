@@ -5,8 +5,13 @@
         <VaButton preset="secondary" color="textPrimary">
           <span class="profile-dropdown__anchor min-w-max">
             <slot />
-            <VaAvatar :size="32" color="primary">
-              {{ userInitials }}
+            <VaAvatar
+              :key="userDisplayName"
+              :size="avatarSize"
+              class="ml-1 adaptive-avatar"
+              :style="{ minWidth: avatarSize, fontSize: fontSize }"
+            >
+              <span :style="{ fontSize: fontSize, fontWeight: '500' }">{{ userDisplayName }}</span>
             </VaAvatar>
           </span>
         </VaButton>
@@ -49,34 +54,52 @@ const { t } = useI18n()
 const router = useRouter()
 const userStore = useUserStore()
 
-// 计算用户姓名首字母
-const userInitials = computed(() => {
+// 计算用户显示名称 - 显示完整全名
+const userDisplayName = computed(() => {
   const user = userStore.user
-  if (!user) return '用'
+  if (!user) return '用户'
 
-  // 如果有全名，优先使用全名的首字母
-  if (user.fullName && user.fullName.trim()) {
-    const fullName = user.fullName.trim()
-    // 如果是中文名字，取第一个字符
-    if (/[\u4e00-\u9fa5]/.test(fullName)) {
-      return fullName.charAt(0)
-    }
-    // 如果是英文名字，取名和姓的首字母
-    const nameParts = fullName.split(' ').filter((part) => part.length > 0)
-    if (nameParts.length >= 2) {
-      return (nameParts[0].charAt(0) + nameParts[nameParts.length - 1].charAt(0)).toUpperCase()
-    } else if (nameParts.length === 1) {
-      return nameParts[0].charAt(0).toUpperCase()
-    }
+  // 优先显示全名 - 处理两种不同的字段名
+  const fullName = user.fullName || (user as any).fullname
+  if (fullName && fullName.trim()) {
+    return fullName.trim()
   }
 
-  // 如果没有全名，使用用户名的首字母
+  // 如果没有全名，显示用户名
   if (user.username && user.username.trim()) {
-    return user.username.charAt(0).toUpperCase()
+    return user.username.trim()
   }
 
-  // 默认返回'用'
-  return '用'
+  // 默认返回'用户'
+  return '用户'
+})
+
+// 根据用户名长度自适应头像大小
+const avatarSize = computed(() => {
+  const nameLength = userDisplayName.value.length
+  if (nameLength <= 2) {
+    return '32px' // 小尺寸，适合2个字符
+  } else if (nameLength === 3) {
+    return '38px' // 中等尺寸，适合3个字符
+  } else if (nameLength === 4) {
+    return '44px' // 稍大尺寸，适合4个字符
+  } else {
+    return '50px' // 大尺寸，适合更长的名字
+  }
+})
+
+// 根据头像大小自适应字体大小
+const fontSize = computed(() => {
+  const nameLength = userDisplayName.value.length
+  if (nameLength <= 2) {
+    return '11px'
+  } else if (nameLength === 3) {
+    return '10px'
+  } else if (nameLength === 4) {
+    return '9px'
+  } else {
+    return '8px'
+  }
 })
 
 type ProfileListItem = {
@@ -160,6 +183,26 @@ const resolveLinkAttribute = (item: ProfileListItem) => {
 
   &__anchor {
     display: inline-block;
+
+    .adaptive-avatar {
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        line-height: 1;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
+        transition: font-size 0.3s ease;
+      }
+    }
   }
 }
 </style>

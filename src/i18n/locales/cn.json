@@ -479,6 +479,21 @@
       "tester": "测试人员",
       "regular": "普通人员",
       "admin": "管理员"
+    },
+    "errors": {
+      "required": "此字段为必填项",
+      "invalidEmail": "请输入有效的邮箱地址",
+      "invalidName": "请输入有效的姓名",
+      "createFailed": "创建用户失败",
+      "updateFailed": "更新用户失败",
+      "deleteFailed": "删除用户失败",
+      "loadFailed": "加载用户数据失败",
+      "noPermission": "没有权限执行此操作",
+      "usernameTaken": "用户名已被使用",
+      "emailTaken": "邮箱已被使用",
+      "networkError": "网络连接错误，请稍后重试",
+      "serverError": "服务器错误，请联系管理员",
+      "unknownError": "未知错误，请稍后重试"
     }
   },
   "testingItems": {

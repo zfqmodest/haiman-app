@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts" setup>
-const props = withDefaults(
+withDefaults(
   defineProps<{
     src: string
     color?: string
@@ -11,7 +11,9 @@ const props = withDefaults(
     width?: string | number
   }>(),
   {
+    color: 'primary',
     height: 'auto',
+    width: 'auto',
   },
 )
 </script>

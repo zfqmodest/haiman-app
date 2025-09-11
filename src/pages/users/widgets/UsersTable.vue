@@ -11,12 +11,11 @@ const { t } = useI18n()
 
 const columns = computed(() =>
   defineVaDataTableColumns([
+    { label: t('users.role'), key: 'role', sortable: true },
     { label: t('users.fullName'), key: 'fullname', sortable: true },
     { label: t('users.username'), key: 'username', sortable: true },
     { label: t('users.phone'), key: 'phone', sortable: true },
     { label: t('users.email'), key: 'email', sortable: true },
-    { label: t('users.role'), key: 'role', sortable: true },
-    { label: t('users.status'), key: 'status', sortable: true },
     { label: t('users.actions'), key: 'actions', align: 'left' },
   ]),
 )

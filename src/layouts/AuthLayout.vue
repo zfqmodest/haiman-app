@@ -36,7 +36,6 @@
 
 <script lang="ts" setup>
 import { useBreakpoint } from 'vuestic-ui'
-import VuesticLogo from '../components/VuesticLogo.vue'
 import VueImage from '../components/VueImage.vue'
 
 const breakpoint = useBreakpoint()

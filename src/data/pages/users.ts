@@ -83,7 +83,7 @@ export const getUsers = async (filters: Partial<Filters & Pagination & Sorting>)
   }
 }
 
-export const addUser = async (user: User) => {
+export const addUser = async (): Promise<never> => {
   // 此方法已被替换为 authApi.createUser，这里保留以避免破坏现有调用
   throw new Error('请使用 authApi.createUser 方法')
 }
@@ -120,7 +120,7 @@ export const updateUser = async (user: User) => {
   }
 }
 
-export const uploadAvatar = async (body: FormData) => {
+export const uploadAvatar = async (): Promise<never> => {
   // TODO: 实现头像上传功能
   throw new Error('头像上传功能待实现')
 }

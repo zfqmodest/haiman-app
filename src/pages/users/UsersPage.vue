@@ -6,6 +6,7 @@ import EditUserForm from './widgets/EditUserForm.vue'
 import { User } from './types'
 import { useUsers } from './composables/useUsers'
 import { useModal, useToast } from 'vuestic-ui'
+import { useUserStore } from '../../stores/user-store'
 
 const doShowEditUserModal = ref(false)
 const saving = ref(false)
@@ -45,24 +46,26 @@ const onUserSaved = async (user: User) => {
 
     if (userToEdit.value) {
       await usersApi.update(user)
-      if (!error.value) {
-        notify({
-          message: t('users.userUpdated', { name: user.fullname }),
-          color: 'success',
+      notify({
+        message: t('users.userUpdated', { name: user.fullname }),
+        color: 'success',
+      })
+
+      // 如果更新的是当前登录用户，同步更新用户存储区的信息
+      const currentUser = useUserStore().user
+      if (currentUser && currentUser.username === user.username) {
+        useUserStore().updateUser({
+          fullName: user.fullname,
+          email: user.email,
+          role: String(user.role),
         })
       }
     } else {
       await usersApi.add(user)
-      if (!error.value) {
-        notify({
-          message: t('users.userCreated', { name: user.fullname }),
-          color: 'success',
-        })
-      }
-    }
-    // 如果有错误，抛出异常阻止模态框关闭
-    if (error.value) {
-      throw error.value
+      notify({
+        message: t('users.userCreated', { name: user.fullname }),
+        color: 'success',
+      })
     }
   } finally {
     saving.value = false

@@ -24,7 +24,6 @@
 <script lang="ts" setup>
 import LanguageSwitcher from './language-switcher/LanguageSwitcher.vue'
 import ThemeSwitcher from './theme-switcher/ThemeSwitcher.vue'
-import Notifications from './notifications/Notifications.vue'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()

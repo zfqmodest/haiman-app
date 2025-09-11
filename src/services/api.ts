@@ -1,65 +1,49 @@
-// 根据当前环境自动构建API路径
-function getBaseUrl() {
-  // 优先使用环境变量配置的API地址
-  const envUrl = import.meta.env.VITE_API_BASE_URL
-  if (envUrl) {
-    console.log('使用环境变量API地址:', envUrl)
-    return envUrl
-  }
-
-  // 自动检测当前访问URL，替换为API地址
+// 简单的API配置 - 智能检测当前访问地址
+function getApiBaseUrl() {
+  // 直接使用当前页面的主机名和端口8081
   const protocol = window.location.protocol
   const hostname = window.location.hostname
-  const port = '8081' // 后端默认端口
-
-  const autoUrl = `${protocol}//${hostname}:${port}/api`
-  console.log('自动生成API地址:', autoUrl)
-  return autoUrl
+  return `${protocol}//${hostname}:8081/api`
 }
 
-const apiBaseUrl = getBaseUrl()
+const apiBaseUrl = getApiBaseUrl()
+console.log('API地址:', apiBaseUrl)
 
-// 认证相关接口 - 包含删除用户功能
+// 认证相关接口
 export const authApi = {
   login: async (credentials: { username: string; password: string }) => {
     try {
-      console.log('API请求地址:', `${apiBaseUrl}/auth/login`)
-      return await fetch(`${apiBaseUrl}/auth/login`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(credentials),
-        mode: 'cors',
-        credentials: 'include',
-      })
-    } catch (error) {
-      console.error('登录请求异常:', error)
-      throw error
-    }
-  },
-  logout: async () => {
-    try {
-      return await fetch(`${apiBaseUrl}/auth/logout`, {
+      console.log('登录请求到:', `${apiBaseUrl}/auth/login`)
+
+      const response = await fetch(`${apiBaseUrl}/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
         mode: 'cors',
-        credentials: 'include',
+        body: JSON.stringify(credentials),
       })
+
+      console.log('登录响应:', response.status)
+      return response
     } catch (error) {
-      console.error('登出请求异常:', error)
+      console.error('登录请求失败:', error)
       throw error
     }
   },
-  createUser: (userData: {
-    username: string
-    password: string
-    fullName: string
-    email: string
-    phone: string
-    role: number
-  }) =>
+
+  logout: async () => {
+    return await fetch(`${apiBaseUrl}/auth/logout`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+      mode: 'cors',
+    })
+  },
+
+  createUser: (userData: any) =>
     fetch(`${apiBaseUrl}/auth/register/admin`, {
       method: 'POST',
       headers: {
@@ -67,7 +51,9 @@ export const authApi = {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
       body: JSON.stringify(userData),
+      mode: 'cors',
     }),
+
   getUsers: () =>
     fetch(`${apiBaseUrl}/auth/users`, {
       method: 'GET',
@@ -75,7 +61,9 @@ export const authApi = {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
+      mode: 'cors',
     }),
+
   deleteUser: (userId: number) =>
     fetch(`${apiBaseUrl}/auth/users/${userId}`, {
       method: 'DELETE',
@@ -83,11 +71,10 @@ export const authApi = {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
+      mode: 'cors',
     }),
-  updateUser: (
-    userId: number,
-    userData: { fullName?: string; email?: string; phone?: string; password?: string; role?: number; active?: boolean },
-  ) =>
+
+  updateUser: (userId: number, userData: any) =>
     fetch(`${apiBaseUrl}/auth/users/${userId}`, {
       method: 'PUT',
       headers: {
@@ -95,9 +82,11 @@ export const authApi = {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
       body: JSON.stringify(userData),
+      mode: 'cors',
     }),
 }
 
+// API 工具函数（向后兼容）
 export default {
   allUsers: () => `${apiBaseUrl}/users`,
   user: (id: string) => `${apiBaseUrl}/users/${id}`,

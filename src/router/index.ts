@@ -137,10 +137,10 @@ const router = createRouter({
 // 路由守卫
 router.beforeEach((to, from, next) => {
   const userStore = useUserStore()
-  const isAuthenticated = userStore.isAuthenticated
+  // const isAuthenticated = userStore.isAuthenticated
 
-  // 首次加载时，从 localStorage 恢复状态
-  if (from.name === undefined && !isAuthenticated) {
+  // 首次加载时，或者有token但用户信息为空时，从 localStorage 恢复状态
+  if (from.name === undefined || (userStore.token && !userStore.user)) {
     userStore.restoreAuth()
   }
 

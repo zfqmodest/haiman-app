@@ -16,47 +16,62 @@ interface AuthState {
 
 export const useUserStore = defineStore('user', {
   state: (): AuthState => {
+    // 尝试从localStorage恢复用户信息
+    const token = localStorage.getItem('token')
+    const userStr = localStorage.getItem('user')
+    let user = null
+
+    if (token && userStr) {
+      try {
+        user = JSON.parse(userStr)
+      } catch (error) {
+        // 如果解析失败，清除无效数据
+        localStorage.removeItem('token')
+        localStorage.removeItem('user')
+      }
+    }
+
     return {
-      user: null,
-      token: localStorage.getItem('token'),
-      isAuthenticated: !!localStorage.getItem('token'),
+      user,
+      token,
+      isAuthenticated: !!token,
     }
   },
 
   actions: {
     async login(credentials: { username: string; password: string }) {
       try {
+        console.log('开始登录...')
         const response = await authApi.login(credentials)
 
         if (!response.ok) {
-          const error = await response.json()
-          throw new Error(error.message || '登录失败')
+          const errorData = await response.json()
+          return { success: false, message: errorData.message || '登录失败' }
         }
 
         const data = await response.json()
 
         if (!data.success) {
-          throw new Error(data.message || '登录失败')
+          return { success: false, message: data.message || '登录失败' }
         }
 
-        // 保存用户信息和token
+        // 保存用户信息
         this.user = {
           username: data.data.username,
           email: data.data.email || '',
-          fullName: data.data.fullName,
+          fullName: data.data.fullName || data.data.fullname, // 处理两种可能的字段名
           role: data.data.role,
         }
         this.token = data.data.token
         this.isAuthenticated = true
 
-        // 保存到localStorage
         localStorage.setItem('token', data.data.token)
         localStorage.setItem('user', JSON.stringify(this.user))
 
         return { success: true, data: data.data }
       } catch (error: any) {
-        console.error('登录错误:', error)
-        return { success: false, message: error.message }
+        console.error('登录异常:', error)
+        return { success: false, message: '连接服务器失败' }
       }
     },
 
@@ -96,6 +111,14 @@ export const useUserStore = defineStore('user', {
           // 如果解析失败，清除无效数据
           this.logout()
         }
+      }
+    },
+
+    // 更新用户信息（比如修改全名后）
+    updateUser(userData: Partial<User>) {
+      if (this.user) {
+        this.user = { ...this.user, ...userData }
+        localStorage.setItem('user', JSON.stringify(this.user))
       }
     },
   },

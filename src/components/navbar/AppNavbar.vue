@@ -26,7 +26,6 @@
 import { storeToRefs } from 'pinia'
 import { useGlobalStore } from '../../stores/global-store'
 import AppNavbarActions from './components/AppNavbarActions.vue'
-import VuesticLogo from '../VuesticLogo.vue'
 import VueImage from '../../components/VueImage.vue'
 
 defineProps({
