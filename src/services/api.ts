@@ -86,6 +86,101 @@ export const authApi = {
     }),
 }
 
+// 登录记录相关接口
+export const loginRecordApi = {
+  // 获取本周登录统计数据
+  getWeeklyStats: async () => {
+    try {
+      const response = await fetch(`${apiBaseUrl}/login-records/weekly-stats`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+        mode: 'cors',
+      })
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
+
+      return await response.json()
+    } catch (error) {
+      console.error('获取周统计数据失败:', error)
+      throw error
+    }
+  },
+
+  // 获取当前在线用户
+  getCurrentOnlineUsers: async () => {
+    try {
+      const response = await fetch(`${apiBaseUrl}/login-records/online-users`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+        mode: 'cors',
+      })
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
+
+      return await response.json()
+    } catch (error) {
+      console.error('获取在线用户失败:', error)
+      throw error
+    }
+  },
+
+  // 记录用户登出
+  recordLogout: async (userId: number) => {
+    try {
+      const response = await fetch(`${apiBaseUrl}/login-records/record-logout?userId=${userId}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+        mode: 'cors',
+      })
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
+
+      return await response.json()
+    } catch (error) {
+      console.error('记录登出失败:', error)
+      throw error
+    }
+  },
+
+  // 更新用户活动时间
+  updateActivity: async (userId: number) => {
+    try {
+      const response = await fetch(`${apiBaseUrl}/login-records/update-activity?userId=${userId}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+        mode: 'cors',
+      })
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
+
+      return await response.json()
+    } catch (error) {
+      console.error('更新活动时间失败:', error)
+      throw error
+    }
+  },
+}
+
 // API 工具函数（向后兼容）
 export default {
   allUsers: () => `${apiBaseUrl}/users`,

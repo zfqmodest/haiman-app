@@ -58,16 +58,16 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        // 允许特定域名 + 通配符
-        configuration.setAllowedOrigins(Arrays.asList(
+        // 使用 allowedOriginPatterns 替代 allowedOrigins 以支持 allowCredentials
+        configuration.setAllowedOriginPatterns(Arrays.asList(
             "http://localhost:5175",
-            "http://localhost:5176",
+            "http://localhost:5176", 
+            "http://127.0.0.1:5175",
+            "http://127.0.0.1:5176",
             "http://admin.zfqqjb.top:5175", 
             "http://admin.zfqqjb.top:5176", 
             "http://admin.zfqqjb.top"
         ));
-        // 添加通配符模式
-        configuration.addAllowedOriginPattern("*");
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(Arrays.asList("*"));
         configuration.setExposedHeaders(Arrays.asList("Authorization", "Content-Type"));

@@ -1,11 +1,11 @@
-import { Ref, ref, unref, watch, computed } from 'vue'
+import { Ref, ref, unref, watch, computed, onUnmounted } from 'vue'
 import { v4 as uuid } from 'uuid'
 import type { Filters, Pagination, Sorting } from '../../../data/pages/users'
 import { User } from '../types'
 import { useUsersStore } from '../../../stores/users'
 
 const makePaginationRef = () => ref<Pagination>({ page: 1, perPage: 10, total: 0 })
-const makeSortingRef = () => ref<Sorting>({ sortBy: 'fullname', sortingOrder: null })
+const makeSortingRef = () => ref<Sorting>({ sortBy: 'fullName', sortingOrder: null })
 const makeFiltersRef = () => ref<Partial<Filters>>({ search: '' })
 
 export const useUsers = (options?: {
@@ -32,6 +32,32 @@ export const useUsers = (options?: {
       isLoading.value = false
     }
   }
+
+  // 静默获取用户数据，用于实时更新（不显示加载状态）
+  const silentFetch = async () => {
+    try {
+      await usersStore.getAll({
+        filters: unref(filters),
+        sorting: unref(sorting),
+        pagination: unref(pagination),
+      })
+    } catch (err) {
+      // 静默处理错误，不影响用户体验
+      console.warn('Silent fetch failed:', err)
+    }
+  }
+
+  // 设置定时器，每30秒自动刷新用户状态
+  const intervalId = setInterval(() => {
+    silentFetch()
+  }, 30000) // 30秒间隔
+
+  // 组件卸载时清除定时器
+  onUnmounted(() => {
+    if (intervalId) {
+      clearInterval(intervalId)
+    }
+  })
 
   watch(
     filters,
@@ -93,6 +119,7 @@ export const useUsers = (options?: {
     users,
 
     fetch,
+    refreshStatus: silentFetch, // 暴露手动刷新状态的方法
     async add(user: User) {
       isLoading.value = true
       error.value = null // 清除之前的错误

@@ -2,7 +2,9 @@
 import { PropType, computed, ref } from 'vue'
 import { useForm } from 'vuestic-ui'
 import { Material, EmptyMaterial } from '../types'
-import { validators } from '../../../services/utils'
+import { createValidators } from '../../../services/utils'
+
+const validators = createValidators() // 使用支持 i18n 的验证器
 
 const props = defineProps({
   material: {

@@ -35,6 +35,12 @@ public class User implements UserDetails {
     
     @Column
     private Boolean active = true;
+    
+    @Column(name = "is_online")
+    private Boolean isOnline = false; // 在线状态，默认离线
+    
+    @Column(name = "last_login_time")
+    private java.time.LocalDateTime lastLoginTime; // 最后登录时间
 
     // Constructors
     public User() {}
@@ -149,5 +155,21 @@ public class User implements UserDetails {
 
     public void setActive(Boolean active) {
         this.active = active;
+    }
+
+    public Boolean getIsOnline() {
+        return isOnline;
+    }
+
+    public void setIsOnline(Boolean isOnline) {
+        this.isOnline = isOnline;
+    }
+
+    public java.time.LocalDateTime getLastLoginTime() {
+        return lastLoginTime;
+    }
+
+    public void setLastLoginTime(java.time.LocalDateTime lastLoginTime) {
+        this.lastLoginTime = lastLoginTime;
     }
 }

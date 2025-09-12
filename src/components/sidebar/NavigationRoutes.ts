@@ -11,14 +11,13 @@ export default {
     displayName: 'menu.home',
   },
   routes: [
-    // 暂时隐藏仪表盘选项
-    // {
-    //   name: 'dashboard',
-    //   displayName: 'menu.dashboard',
-    //   meta: {
-    //     icon: 'vuestic-iconset-dashboard',
-    //   },
-    // },
+    {
+      name: 'dashboard',
+      displayName: 'menu.dashboard',
+      meta: {
+        icon: 'vuestic-iconset-dashboard',
+      },
+    },
     {
       name: 'users',
       displayName: 'menu.users',

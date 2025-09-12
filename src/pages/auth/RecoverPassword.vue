@@ -25,8 +25,9 @@
 import { reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useForm, useToast } from 'vuestic-ui'
-import { validators } from '../../services/utils'
+import { createValidators } from '../../services/utils'
 
+const validators = createValidators() // 使用支持 i18n 的验证器
 const { validate } = useForm('form')
 const { push: routerPush } = useRouter()
 const { init } = useToast()

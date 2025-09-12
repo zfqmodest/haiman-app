@@ -52,7 +52,11 @@ const isTablet = ref(false)
 const { isSidebarMinimized } = storeToRefs(GlobalStore)
 
 const onResize = () => {
-  isSidebarMinimized.value = breakpoints.mdDown
+  // 只在移动设备上自动隐藏侧边栏，桌面和平板保持用户的选择
+  if (breakpoints.smDown && !isSidebarMinimized.value) {
+    // 仅在小屏设备且当前未最小化时才自动隐藏
+    isSidebarMinimized.value = true
+  }
   isMobile.value = breakpoints.smDown
   isTablet.value = breakpoints.mdDown
   sidebarMinimizedWidth.value = isMobile.value ? '0' : '4.5rem'
@@ -62,6 +66,11 @@ const onResize = () => {
 onMounted(() => {
   window.addEventListener('resize', onResize)
   onResize()
+
+  // 在桌面端确保侧边栏显示
+  if (!breakpoints.smDown) {
+    GlobalStore.showSidebar()
+  }
 })
 
 onBeforeUnmount(() => {

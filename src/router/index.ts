@@ -46,7 +46,7 @@ const routes: Array<RouteRecordRaw> = [
     path: '/admin',
     component: AppLayout,
     meta: { requiresAuth: true },
-    redirect: { name: 'users' },
+    redirect: { name: 'dashboard' },
     children: [
       {
         name: 'dashboard',

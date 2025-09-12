@@ -30,7 +30,7 @@ export const useUsersStore = defineStore('users', {
         const response = await authApi.createUser({
           username: user.username,
           password: user.password || '',
-          fullName: user.fullname,
+          fullName: user.fullName,
           email: user.email || '',
           phone: user.phone || '',
           role: user.role,

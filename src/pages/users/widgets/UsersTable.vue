@@ -12,10 +12,11 @@ const { t } = useI18n()
 const columns = computed(() =>
   defineVaDataTableColumns([
     { label: t('users.role'), key: 'role', sortable: true },
-    { label: t('users.fullName'), key: 'fullname', sortable: true },
+    { label: t('users.fullName'), key: 'fullName', sortable: true },
     { label: t('users.username'), key: 'username', sortable: true },
     { label: t('users.phone'), key: 'phone', sortable: true },
     { label: t('users.email'), key: 'email', sortable: true },
+    { label: `${t('users.status')} (${t('users.autoRefresh')})`, key: 'isOnline', sortable: true },
     { label: t('users.actions'), key: 'actions', align: 'left' },
   ]),
 )
@@ -50,16 +51,10 @@ const roleColors: Record<UserRole, string> = {
 
 // 角色名称映射
 const getRoleName = (role: UserRole): string => {
-  switch (role) {
-    case 1:
-      return '管理员'
-    case 2:
-      return '测试人员'
-    case 3:
-      return '普通人员'
-    default:
-      return '未知角色'
-  }
+  if (role === 1) return '管理员'
+  if (role === 2) return '测试人员'
+  if (role === 3) return '普通人员'
+  return '未知角色'
 }
 
 const totalPages = computed(() => Math.ceil(props.pagination.total / props.pagination.perPage))
@@ -69,7 +64,7 @@ const { confirm } = useModal()
 const onUserDelete = async (user: User) => {
   const agreed = await confirm({
     title: t('users.deleteUserTitle'),
-    message: t('users.deleteUserMessage', { name: user.fullname }),
+    message: t('users.deleteUserMessage', { name: user.fullName }),
     okText: t('users.delete'),
     cancelText: t('users.cancel'),
     size: 'small',
@@ -90,10 +85,10 @@ const onUserDelete = async (user: User) => {
     :items="users"
     :loading="$props.loading"
   >
-    <template #cell(fullname)="{ rowData }">
+    <template #cell(fullName)="{ rowData }">
       <div class="flex items-center gap-2 max-w-[230px] ellipsis">
         <UserAvatar :user="rowData as User" size="small" />
-        {{ rowData.fullname }}
+        {{ rowData.fullName }}
       </div>
     </template>
 
@@ -116,6 +111,13 @@ const onUserDelete = async (user: User) => {
     </template>
     <template #cell(role)="{ rowData }">
       <VaBadge :text="getRoleName(rowData.role as UserRole)" :color="roleColors[rowData.role as UserRole]" />
+    </template>
+
+    <template #cell(isOnline)="{ rowData }">
+      <VaBadge
+        :text="rowData.isOnline ? t('users.online') : t('users.offline')"
+        :color="rowData.isOnline ? 'success' : 'secondary'"
+      />
     </template>
     <template #cell(actions)="{ rowData }">
       <div class="flex gap-3 justify-start items-center">

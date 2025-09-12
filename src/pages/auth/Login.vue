@@ -45,12 +45,13 @@ import { reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useForm, useToast } from 'vuestic-ui'
 import { useUserStore } from '../../stores/user-store'
-import { validators } from '../../services/utils'
+import { createValidators } from '../../services/utils'
 
 const { validate } = useForm('form')
 const { push: routerPush } = useRouter()
 const { init } = useToast()
 const userStore = useUserStore()
+const validators = createValidators() // 使用支持 i18n 的验证器
 
 const isLoading = ref(false)
 

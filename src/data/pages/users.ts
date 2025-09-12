@@ -39,7 +39,7 @@ export const getUsers = async (filters: Partial<Filters & Pagination & Sorting>)
       const searchLower = filters.search.toLowerCase()
       filteredUsers = filteredUsers.filter(
         (user: User) =>
-          user.fullname.toLowerCase().includes(searchLower) ||
+          user.fullName.toLowerCase().includes(searchLower) ||
           user.username.toLowerCase().includes(searchLower) ||
           (user.phone && user.phone.includes(searchLower)),
       )
@@ -91,7 +91,7 @@ export const addUser = async (): Promise<never> => {
 export const updateUser = async (user: User) => {
   try {
     const response = await authApi.updateUser(Number(user.id), {
-      fullName: user.fullname,
+      fullName: user.fullName,
       email: user.email,
       phone: user.phone,
       password: user.password,

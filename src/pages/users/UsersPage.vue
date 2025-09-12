@@ -13,7 +13,7 @@ const saving = ref(false)
 
 const { t } = useI18n()
 
-const { users, isLoading, filters, sorting, pagination, error, ...usersApi } = useUsers()
+const { users, isLoading, filters, sorting, pagination, error, refreshStatus, ...usersApi } = useUsers()
 
 const userToEdit = ref<User | null>(null)
 
@@ -28,6 +28,15 @@ const showAddUserModal = () => {
 }
 
 const { init: notify } = useToast()
+
+// 手动刷新用户状态
+const handleRefreshStatus = async () => {
+  await refreshStatus()
+  notify({
+    message: t('users.statusRefreshed'),
+    color: 'success',
+  })
+}
 
 watchEffect(() => {
   if (error.value) {
@@ -47,7 +56,7 @@ const onUserSaved = async (user: User) => {
     if (userToEdit.value) {
       await usersApi.update(user)
       notify({
-        message: t('users.userUpdated', { name: user.fullname }),
+        message: t('users.userUpdated', { name: user.fullName }),
         color: 'success',
       })
 
@@ -55,7 +64,7 @@ const onUserSaved = async (user: User) => {
       const currentUser = useUserStore().user
       if (currentUser && currentUser.username === user.username) {
         useUserStore().updateUser({
-          fullName: user.fullname,
+          fullName: user.fullName,
           email: user.email,
           role: String(user.role),
         })
@@ -63,7 +72,7 @@ const onUserSaved = async (user: User) => {
     } else {
       await usersApi.add(user)
       notify({
-        message: t('users.userCreated', { name: user.fullname }),
+        message: t('users.userCreated', { name: user.fullName }),
         color: 'success',
       })
     }
@@ -75,7 +84,7 @@ const onUserSaved = async (user: User) => {
 const onUserDelete = async (user: User) => {
   await usersApi.remove(user)
   notify({
-    message: t('users.userDeleted', { name: user.fullname }),
+    message: t('users.userDeleted', { name: user.fullName }),
     color: 'success',
   })
 }
@@ -113,7 +122,15 @@ const beforeEditFormModalClose = async (hide: () => unknown) => {
             </template>
           </VaInput>
         </div>
-        <VaButton @click="showAddUserModal">{{ t('users.addUser') }}</VaButton>
+        <div class="flex gap-2">
+          <VaButton
+            preset="secondary"
+            icon="replay"
+            :aria-label="t('users.refreshStatus')"
+            @click="handleRefreshStatus"
+          />
+          <VaButton @click="showAddUserModal">{{ t('users.addUser') }}</VaButton>
+        </div>
       </div>
       <UsersTable
         v-model:sort-by="sorting.sortBy"

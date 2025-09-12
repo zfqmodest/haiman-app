@@ -25,8 +25,8 @@ const userDisplayName = computed(() => {
   if (!user) return '用户'
 
   // 优先显示全名
-  if (user.fullname && user.fullname.trim()) {
-    return user.fullname.trim()
+  if (user.fullName && user.fullName.trim()) {
+    return user.fullName.trim()
   }
 
   // 如果没有全名，显示用户名
@@ -84,22 +84,13 @@ const fontSize = computed(() => {
     else return '8px'
   }
 })
-
-// const fallback = (fullname: string) => {
-//   try {
-//     const [firstName, lastName] = fullname.split(' ')
-//     return `${firstName[0]}${lastName[0]}`
-//   } catch {
-//     return fullname[0]
-//   }
-// }
 </script>
 
 <template>
   <VaAvatar
     :key="userDisplayName"
     :size="avatarSize"
-    :color="avatarColor(user.fullname)"
+    :color="avatarColor(userDisplayName)"
     class="adaptive-user-avatar"
     :style="{ minWidth: avatarSize, fontSize: fontSize }"
   >

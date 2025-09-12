@@ -26,8 +26,7 @@ const props = defineProps({
 })
 
 const defaultNewUser: Omit<User, 'id'> = {
-  avatar: '', // 保留属性但不再使用
-  fullname: '',
+  fullName: '',
   role: 3, // 默认为普通人员
   username: '',
   email: '',
@@ -106,7 +105,7 @@ const roleSelectOptions = computed(() => {
     <div class="self-stretch flex-col justify-start items-start gap-4 flex">
       <div class="flex gap-4 flex-col sm:flex-row w-full">
         <VaInput
-          v-model="newUser.fullname"
+          v-model="newUser.fullName"
           :label="t('users.fullName')"
           class="w-full sm:w-1/2"
           :rules="[validators.required]"

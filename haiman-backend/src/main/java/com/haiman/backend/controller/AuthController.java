@@ -1,6 +1,7 @@
 package com.haiman.backend.controller;
 
 import com.haiman.backend.entity.User;
+import com.haiman.backend.repository.UserRepository;
 import com.haiman.backend.service.UserDetailsServiceImpl;
 import com.haiman.backend.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,13 +15,14 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin
+@CrossOrigin(originPatterns = {"http://localhost:*", "http://127.0.0.1:*"}, allowCredentials = "true")
 public class AuthController {
     
     @Autowired
@@ -28,6 +30,9 @@ public class AuthController {
     
     @Autowired
     private UserDetailsServiceImpl userDetailsService;
+    
+    @Autowired
+    private UserRepository userRepository;
     
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -48,6 +53,12 @@ public class AuthController {
             );
             
             User user = (User) authentication.getPrincipal();
+            
+            // 更新用户在线状态和最后登录时间
+            user.setIsOnline(true);
+            user.setLastLoginTime(LocalDateTime.now());
+            userRepository.save(user);
+            
             String token = jwtUtil.generateToken(user.getUsername());
             
             response.put("success", true);
@@ -69,6 +80,21 @@ public class AuthController {
     @PostMapping("/logout")
     public ResponseEntity<Map<String, Object>> logout() {
         Map<String, Object> response = new HashMap<>();
+        
+        try {
+            // 获取当前认证的用户
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            if (authentication != null && authentication.getPrincipal() instanceof User) {
+                User user = (User) authentication.getPrincipal();
+                // 设置用户为离线状态
+                user.setIsOnline(false);
+                userRepository.save(user);
+            }
+        } catch (Exception e) {
+            // 即使更新状态失败，也不影响登出
+            System.err.println("Failed to update user online status during logout: " + e.getMessage());
+        }
+        
         response.put("success", true);
         response.put("message", "退出登录成功");
         return ResponseEntity.ok(response);
@@ -141,11 +167,13 @@ public class AuthController {
                 Map<String, Object> userData = new HashMap<>();
                 userData.put("id", user.getId());
                 userData.put("username", user.getUsername());
-                userData.put("fullname", user.getFullName());
+                userData.put("fullName", user.getFullName());
                 userData.put("email", user.getEmail());
                 userData.put("phone", user.getPhone());
                 userData.put("role", user.getRole());
                 userData.put("active", user.getActive());
+                userData.put("isOnline", user.getIsOnline());
+                userData.put("lastLoginTime", user.getLastLoginTime());
                 return userData;
             }).toList();
             
